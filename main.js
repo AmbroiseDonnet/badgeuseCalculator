@@ -1,9 +1,9 @@
-const horaireDepart = document.getElementById("start-time") as HTMLInputElement;
-const DureePauseMidi = document.getElementById("lunch-break") as HTMLInputElement;
-const horaireJournalier = document.getElementById("work-hours") as HTMLInputElement;
-const submitButton = document.getElementById("submitButton") as HTMLButtonElement;
+const horaireDepart = document.getElementById("start-time");
+const DureePauseMidi = document.getElementById("lunch-break");
+const horaireJournalier = document.getElementById("work-hours");
+const submitButton = document.getElementById("submitButton");
 
-function stringMinuteToTime(startWork: number, timeToAdd: number) {
+function stringMinuteToTime(startWork, timeToAdd) {
     const newTotalMinute = (startWork + timeToAdd);
     const newHour = Math.floor(newTotalMinute / 60) % 24;
     return `${newHour} : ${newTotalMinute%60}`;
@@ -19,7 +19,7 @@ submitButton.addEventListener("click", (e) => {
     const workHoursMinute = horaireJournalier.value.split(":")[1]; // minute
     const workHours = parseInt(workHoursHour) * 60 + parseInt(workHoursMinute); // total minute
     const finBadges = stringMinuteToTime(timeStart, lunchBreak + workHours);
-    const resultElement = document.getElementById("result") as HTMLDivElement;
+    const resultElement = document.getElementById("result");
     resultElement.classList.remove("hidden");
     resultElement.textContent = `Vous devez badger à ${finBadges}`;
 })
